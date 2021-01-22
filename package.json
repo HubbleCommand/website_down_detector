@@ -1,0 +1,24 @@
+{
+  "name": "think_story_down_detector",
+  "version": "0.0.1",
+  "description": "Checks if a site is down",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HubbleCommand/think_story_down_detector.git"
+  },
+  "author": "HubbleCommand",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HubbleCommand/think_story_down_detector/issues"
+  },
+  "homepage": "https://github.com/HubbleCommand/think_story_down_detector#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "nodemailer": "^6.4.17"
+  }
+}
