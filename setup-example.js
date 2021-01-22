@@ -1,20 +1,32 @@
 exports.watchers = [
     {
-        "email"     : "youremail@service.com",
-        "password"  : "yourpassword",
+        "sender" : {
+            "service"   : "gmail",
+            "email"     : "youremail@service.com",
+            "password"  : "yourpassword",
+        },
+        "recievers" : [
+            "myfriend@yahoo.com"
+        ],
         "timeout"   : 300000,
-        "uris"      : [
-            "http://thinkethicalai.org/",
-            "http://contributivescience.org/"
+        "urls"      : [
+            "https://www.google.com/",
+            "https://en.wikipedia.org/"
         ]
     },
     {
-        "email"     : "youremail@service.com",
-        "password"  : "yourpassword",
+        "sender" : {
+            "service"   : "gmail",
+            "email"     : "youremail@service.com",
+            "password"  : "yourpassword",
+        },
+        "recievers" : [
+            "myfriend@yahoo.com"
+        ],
         "timeout"   : 300000,
-        "uris"      : [
-            "http://thinkethicalai.org/",
-            "http://contributivescience.org/"
+        "urls"      : [
+            "https://www.google.com/",
+            "https://en.wikipedia.org/"
         ]
-    }
+    },
 ]
