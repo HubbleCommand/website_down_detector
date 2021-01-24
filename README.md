@@ -1,6 +1,8 @@
 # Think Story Down Detector
 Checks if a site is down, and sends an email if it seems to be.
 
+It was specifically made to watch for infinite loading problems on Think Story deployments, which in node give ECONNABORTED error when a non-infinite timeout is set.
+
 ## Using
 Create a setup.js file in the same folder as setup-example.js. Add the credentials of the email account you want to send from in this new file. If you are using an email service like gmail, make sure you have [allowed less secure apps to sign in to this account](https://support.google.com/accounts/answer/6010255).
 
