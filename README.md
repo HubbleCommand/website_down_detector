@@ -2,11 +2,41 @@
 Checks if a site is down, and sends an email if it seems to be.
 
 ## Using
-Add your email credentials to the setup.js file, as in the example file setup-example.js
+Create a setup.js file in the same folder as setup-example.js. Add the credentials of the email account you want to send from in this new file. If you are using an email service like gmail, make sure you have [allowed less secure apps to sign in to this account](https://support.google.com/accounts/answer/6010255).
 
 To check that it works, execute `npm start` in the directory of this readme.
 
 You will either get an email that the site is down, or a log saying that it is up!
+
+## Format of setup.js
+This down detector is designed so that you can run one instance that checks if many sites are down at once. 
+
+Watchers is an array of Objects, where each Object will send a notification to any number of emails, that any number of websites (URLs) are not responding.
+
+- URLs is a list of the websites to watch and see if they go down
+- Timeout is the amount of time to wait until considering that the site is down (i.e. handles infinite loading problems on sites)
+- Sender is the email that will be sending the notifications
+- Recievers is the list of emails that will be recieving the notification from the Sender
+
+```
+exports.watchers = [
+    {
+        "urls"      : [
+            "http://thinkethicalai.org/",
+            "http://contributivescience.org/"
+        ],
+        "timeout"   : 300000,
+        "sender" : {
+            "service"   : "gmail",
+            "email"     : "youremail@service.com",
+            "password"  : "yourpassword",
+        },
+        "recievers" : [
+            "myfriend@yahoo.com"
+        ]
+    }
+]
+```
 
 ## Running at intervals
 While there are many node packages to run scheduled tasks, it is easy to use [cron](https://www.raspberrypi.org/documentation/linux/usage/cron.md).
@@ -20,3 +50,5 @@ CRON example breakdown:
 - `/usr/bin/node     `                                : Path to Node (so that the following script can execute)
 - `/home/username/think_story_down_detector/index.js` : The script to execute
 - `>> /path/to/log/file.log`                          : Asks to output results to log file, at the specified path
+
+Note: it is still good to regularly check the logs, as if there is an error sending the notification email, this will only be recorded in the log file.
