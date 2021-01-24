@@ -2,11 +2,7 @@ var nodemailer = require('nodemailer');
 var axios = require('axios');
 var setup = require('./setup');
 
-const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-];
-
-//It may be required to put the following line at the very top: /usr/bin/env node (add #! before /usr/...)
+const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 function sendWarningMail(sender, reciever, subject, message){
     var transporter = nodemailer.createTransport({
@@ -40,7 +36,6 @@ function printCurrentTimeLogFormat(){
 
 console.log(' ')
 console.log(' ------------------------------ ')
-console.log()
 console.log(printCurrentTimeLogFormat() + " Running Site Down Detector with the following settings...")
 console.log(setup);
 
@@ -56,23 +51,18 @@ for(let sItem of setup.watchers){
             .catch((err) => {
                 console.log(err.code + ':' + err.message);
 
-                if(err.code == 'ECONNABORTED'){
-                    console.log('TIMEOUT EXCEEDED FOR SITE ' + url + ', sending warning email');
-                    for(let reciever of sItem.recievers){
-                        sendWarningMail(
-                            {
-                                email: sItem.sender.email,
-                                password: sItem.sender.password,
-                                service: sItem.sender.service
-                            },
-                            reciever,
-                            url + ' appears to be down!',
-                            url + ' may be down. You should check if you can access the site yourself!'
-                        )
-                    }
+                for(let reciever of sItem.recievers){
+                    sendWarningMail(
+                        {
+                            email: sItem.sender.email,
+                            password: sItem.sender.password,
+                            service: sItem.sender.service
+                        },
+                        reciever,
+                        url + ' may be down, code: ' + err.code,
+                        url + ' may be down. \nThe following error was encountered: ' + err.code + '. \nYou should check if you can access the site yourself!'
+                    )
                 }
             });
-        
     }
-    
 }
