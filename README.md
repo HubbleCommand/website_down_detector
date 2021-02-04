@@ -35,7 +35,8 @@ exports.watchers = [
         },
         "recievers" : [
             "myfriend@yahoo.com"
-        ]
+        ],
+        "message": "Something useful"
     }
 ]
 ```
@@ -53,4 +54,4 @@ CRON example breakdown:
 - `/home/username/think_story_down_detector/index.js` : The script to execute
 - `>> /path/to/log/file.log`                          : Asks to output results to log file, at the specified path
 
-Note: it is still good to regularly check the logs, as if there is an error sending the notification email, this will only be recorded in the log file.
+Note: it is still good to regularly check the logs, as if there is an error sending the notification email, or with completing the CRON job, this will only be recorded in the log file.
