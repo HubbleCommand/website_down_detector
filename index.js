@@ -29,9 +29,21 @@ function sendWarningMail(sender, reciever, subject, message){
     }); 
 }
 
+function fixSingleDigit(data){
+    if(data.length < 2){
+        return data = '0' + data;
+    } else {
+        return data;
+    }
+}
+
 function printCurrentTimeLogFormat(){
     let d = new Date();
-    return monthNames[d.getMonth()].substring(0, 3) + ' ' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+    var minutes = d.getMinutes();
+    if(minutes.length < 2){
+        minutes = '0' + minutes;
+    }
+    return monthNames[d.getMonth()].substring(0, 3) + ' ' + fixSingleDigit(d.getDate()) + ' ' + fixSingleDigit(d.getHours()) + ':' + fixSingleDigit(d.getMinutes()) + ':' + fixSingleDigit(d.getSeconds());
 }
 
 console.log(' ')
