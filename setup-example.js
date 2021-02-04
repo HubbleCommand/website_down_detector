@@ -1,4 +1,5 @@
 exports.watchers = [
+    //First watcher
     {
         "sender" : {
             "service"   : "gmail",
@@ -12,8 +13,10 @@ exports.watchers = [
         "urls"      : [
             "https://www.google.com/",
             "https://en.wikipedia.org/"
-        ]
+        ],
+        "message": "An additional message you want to be sent in the content of the email."
     },
+    //A different watcher
     {
         "sender" : {
             "service"   : "gmail",
@@ -27,6 +30,7 @@ exports.watchers = [
         "urls"      : [
             "https://www.google.com/",
             "https://en.wikipedia.org/"
-        ]
+        ],
+        "message": "An additional message you want to be sent in the content of the email."
     },
 ]

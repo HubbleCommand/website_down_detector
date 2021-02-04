@@ -59,7 +59,7 @@ for(let sItem of setup.watchers){
                     },
                     sItem.recievers.join(', '),
                     url + ' may be down, code: ' + err.code,
-                    url + ' may be down. \nThe following error was encountered: ' + '. \nYou should check if you can access the site yourself!'
+                    url + ' may be down. \nThe following error was encountered: ' + err.code + '. \n' + sItem.message + '. \nYou should check if you can access the site yourself!'
                 )
             });
     }
