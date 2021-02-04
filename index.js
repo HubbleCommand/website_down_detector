@@ -51,18 +51,16 @@ for(let sItem of setup.watchers){
             .catch((err) => {
                 console.log(err.code + ':' + err.message);
 
-                for(let reciever of sItem.recievers){
-                    sendWarningMail(
-                        {
-                            email: sItem.sender.email,
-                            password: sItem.sender.password,
-                            service: sItem.sender.service
-                        },
-                        reciever,
-                        url + ' may be down, code: ' + err.code,
-                        url + ' may be down. \nThe following error was encountered: ' + err.code + '. \nYou should check if you can access the site yourself!'
-                    )
-                }
+                sendWarningMail(
+                    {
+                        email: sItem.sender.email,
+                        password: sItem.sender.password,
+                        service: sItem.sender.service
+                    },
+                    sItem.recievers.join(', '),
+                    url + ' may be down, code: ' + err.code,
+                    url + ' may be down. \nThe following error was encountered: ' + '. \nYou should check if you can access the site yourself!'
+                )
             });
     }
 }
