@@ -1,4 +1,4 @@
-# Think Story Down Detector
+# Down Detector
 Checks if a site is down, and sends an email if it seems to be.
 
 It was specifically made to watch for infinite loading problems on Think Story deployments, which in node give ECONNABORTED error when a non-infinite timeout is set.
