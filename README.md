@@ -55,3 +55,7 @@ CRON example breakdown:
 - `>> /path/to/log/file.log`                          : Asks to output results to log file, at the specified path
 
 Note: it is still good to regularly check the logs, as if there is an error sending the notification email, or with completing the CRON job, this will only be recorded in the log file.
+
+If you are not getting any emails, and your specified log file is empty, you may have misconfigured the CRON job, most likely with your node path.
+- If you installed node with apt, the path is the one above :  `/usr/bin/node`
+- However if you installed with nvm, use `which node` to get the full path
