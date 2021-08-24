@@ -1,6 +1,9 @@
 var nodemailer = require('nodemailer');
 var axios = require('axios');
+
+//Setup
 var setup = require('./setup');
+var printSetup = false;
 
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -48,8 +51,12 @@ function printCurrentTimeLogFormat(){
 
 console.log(' ')
 console.log(' ------------------------------ ')
-console.log(printCurrentTimeLogFormat() + " Running Site Down Detector with the following settings...")
-console.log(setup);
+if(printSetup){
+    console.log(printCurrentTimeLogFormat() + " Running Site Down Detector with the following settings...")
+    console.log(setup);
+} else {
+    console.log(printCurrentTimeLogFormat() + " Running Site Down Detector...")
+}
 
 for(let sItem of setup.watchers){
     for(let url of sItem.urls){
@@ -58,9 +65,10 @@ for(let sItem of setup.watchers){
                 timeout: sItem.timeout
             })
             .then(() => {
-                console.log('Site appears to be online');
+                console.log(`Site "${url}" appears to be online`);
             })
             .catch((err) => {
+                console.log(`Site "${url}" appears to be OFFLINE`);
                 console.log(err.code + ':' + err.message);
 
                 sendWarningMail(
