@@ -33,7 +33,9 @@ function sendWarningMail(sender, reciever, subject, message){
 }
 
 function fixSingleDigit(data){
-    if(data.length < 2){
+    if(data == 0){
+        return '00';
+    } else if(data.length < 2){
         return data = '0' + data;
     } else {
         return data;
