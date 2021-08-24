@@ -4,7 +4,15 @@ Checks if a site is down, and sends an email if it seems to be.
 It was specifically made to watch for infinite loading problems on Think Story deployments, which in node give ECONNABORTED error when a non-infinite timeout is set.
 
 ## Using
-Create a setup.js file in the same folder as setup-example.js. Add the credentials of the email account you want to send from in this new file. If you are using an email service like gmail, make sure you have [allowed less secure apps to sign in to this account](https://support.google.com/accounts/answer/6010255).
+Create a setup.js file in the same folder as setup-example.js. Add the credentials of the email account you want to send from in this new file. 
+
+If you are using an email service like gmail, make sure you have allowed insecure apps by:
+- [allowwing less secure apps to sign in to this account](https://support.google.com/accounts/answer/6010255)
+- [disabling  two-step logins with CAPTCHAs](https://www.digitalocean.com/community/questions/unable-to-send-a-email-using-nodemailer-invalid-login-error)
+
+Note that it is not recommended to disable these security features, so don't use an important email account for this. 
+
+You can change the log detail by changing printSetup in index.js. 
 
 To check that it works, execute `npm start` in the directory of this readme.
 
